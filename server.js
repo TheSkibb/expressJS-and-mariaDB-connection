@@ -30,11 +30,6 @@ function getAll(){
   }
 }
 
-async function print(){
-  console.log('test', await getAll())
-}
-print()
-
 app.listen(port, () => {
   console.log("server running on port", port);
 });
