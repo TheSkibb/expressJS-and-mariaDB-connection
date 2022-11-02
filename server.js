@@ -3,25 +3,26 @@ const mysql = require('mysql')
 const app = express();
 const port = 3002;
 
+//insert actual host, user, pass and db
 let connection = mysql.createConnection({
     host: '172.17.0.2',
-    user: 'hotellrommet',
+    user: 'user',
     password: '123',
-    database: 'hotellrommet'
+    database: 'database'
 })
 
 function getAll(){
   try{
     return new Promise((resolve, reject) => {
-        connection.query("SELECT * from demoTable", (err, result)=>{
-            if(err){
-                // The equivalent of throwing the error
-                reject(err);
-            } else {
-                // The equivalent of returning a value for getAll
-                resolve(result[0].testValue);
-            }
-        })
+      connection.query("SELECT * from demoTable", (err, result)=>{
+        if(err){
+          // The equivalent of throwing the error
+          reject(err);
+        } else {
+          // The equivalent of returning a value for getAll
+          resolve(result[-1].testValue);
+        }
+      })
     })
   }
   catch(err){
